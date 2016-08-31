@@ -52,7 +52,7 @@ to run in the same way as the `Daily` class - see above.
 use function Garethellis\CrontabScheduleGenerator\weekly;
 
 echo weekly();
-//outputs ""   
+//outputs "0 0 * * 0"   
    
 echo weekly()->on("Friday");
 //outputs "0 0 * * 4" (i.e. run every Friday at midnight)   
@@ -60,6 +60,29 @@ echo weekly()->on("Friday");
 echo weekly()->on("Saturday")->at("12:10");
 //outputs "10 12 * * 6" (i.e. run every Saturday at 12:10pm
 ```
+
+### Monthly
+
+The `Monthly` class allows you to output crontab schedules to be run on a monthly basis. The `monthly()` function returns
+a new instance of `Monthly`.
+
+Calling `monthly()` by itself will give you a crontab schedule for midnight on the first of the month. To specify a day to run on,
+you can use an ordinal or whole number with the `on()` method. You can also use the `at()` method in the same way as with
+ weekly & daily.
+ 
+``` php
+use function Garethellis\CrontabScheduleGenerator\monthly;
+
+echo monthly();
+//outputs "0 0 1 * *"   
+   
+echo monthly()->on("4th");
+//outputs "0 0 4 * *" (i.e. run every month on the 4th at midnight)   
+   
+echo monthly()->on("12th")->at("10:15");
+//outputs "15 10 12 * *" (i.e. run every month on the 12th at 10:15am)
+```
+ 
 
 ## Change log
 

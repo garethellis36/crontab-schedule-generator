@@ -6,7 +6,7 @@ use Assert\Assertion;
 
 trait TimeCheckerTrait
 {
-    private function checkTime($time)
+    private function getHoursAndMinutesFromTimeString($time)
     {
         Assertion::notEmpty($time);
 

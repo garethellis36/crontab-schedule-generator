@@ -13,7 +13,7 @@ class Daily
 
     public function at($time)
     {
-        list($hours, $mins) = $this->checkTime($time);
+        list($hours, $mins) = $this->getHoursAndMinutesFromTimeString($time);
 
         return "{$mins} {$hours} * * *";
     }

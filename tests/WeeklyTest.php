@@ -39,4 +39,15 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
             is(equalTo("9 4 * * 4"))
         );
     }
+
+    /**
+     * @return void
+     */
+    public function test_it_can_return_a_weekly_schedule_repeated_at_a_given_day()
+    {
+        assertThat(
+            (string)weekly()->on("Sunday")->repeatingOn("Monday"),
+            is(equalTo("0 0 * * 0,1"))
+        );
+    }
 }

@@ -8,7 +8,7 @@ class Weekly
 {
     use TimeCheckerTrait;
 
-    private $day;
+    private $day = 0;
 
     private $hours = 0;
 
@@ -16,13 +16,11 @@ class Weekly
 
     public function __toString()
     {
-        if (!$this->day) {
-            return "0 0 * * 0";
+        if (!is_array($this->day)) {
+            return sprintf("%s %s * * %s", $this->mins, $this->hours, $this->day);
         }
 
-        $dayAsNumber = date("w", strtotime($this->day));
-
-        return sprintf("%s %s * * %s", $this->mins, $this->hours, $dayAsNumber);
+        return sprintf("%s %s * * %s", $this->mins, $this->hours, implode(",", $this->day));
     }
 
     public function on($day)
@@ -39,7 +37,7 @@ class Weekly
             "Saturday",
         ]);
 
-        $this->day = $day;
+        $this->day = date("w", strtotime($day));
         return $this;
     }
 
@@ -49,6 +47,31 @@ class Weekly
 
         $this->hours = $hours;
         $this->mins  = $mins;
+
+        return $this;
+    }
+
+    public function repeatingOn($day)
+    {
+        $day = ucfirst(strtolower($day));
+
+        Assertion::choice($day, [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ]);
+
+        if (!is_array($this->day)) {
+            $this->day = [$this->day];
+        }
+
+        if (!in_array($day, $this->day)) {
+            $this->day[] = date("w", strtotime($day));
+        }
 
         return $this;
     }

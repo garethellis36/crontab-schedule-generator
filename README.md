@@ -84,6 +84,8 @@ a day to run on using the `on()` method. This method takes a day name in English
 If you call it like this, you will get a crontab schedule set to run on that given day at midnight. You can specify a time
 to run in the same way as the `Daily` class - see above.
 
+You can also set weekly schedules to repeat on given days using the `repeatingOn()` method, passing in a day name.
+
 ``` php
 use function Garethellis\CrontabScheduleGenerator\weekly;
 
@@ -95,6 +97,9 @@ echo weekly()->on("Friday");
    
 echo weekly()->on("Saturday")->at("12:10");
 //outputs "10 12 * * 6" (i.e. run every Saturday at 12:10pm
+
+echo weekly()->on("Saturday")->repeatingOn("Sunday");
+//outputs "0 0 * * 0,6" (i.e. run every Saturday & Sunday at midnight)
 ```
 
 ### Monthly

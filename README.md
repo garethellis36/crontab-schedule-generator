@@ -49,7 +49,7 @@ If you call it like this, you will get a crontab schedule set to run on that giv
 to run in the same way as the `Daily` class - see above.
 
 ``` php
-use function Garethellis\CrontabScheduleGenerator\daily;
+use function Garethellis\CrontabScheduleGenerator\weekly;
 
 echo weekly();
 //outputs ""   

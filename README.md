@@ -24,7 +24,10 @@ can be used to create a new instance of `Hourly`.
 
 If you call `hourly()` by itself, you'll get a crontab schedule of "run hourly on the hour". You can specify
  the minutes past the hour to run at by using the `at()` method. This method takes either a number (0-59) or
- one of the following text strings: `quarter past`, `half past` or `quarter to`.
+ one of the following text strings: `on the hour`, `quarter past`, `half past` or `quarter to`.
+ 
+ You can use the `repeatingAt` method to run a task multiple times in an hour. This method takes the same 
+ argument as `at()`, i.e. a number (0-59) or a text string from the above list.
  
  ``` php
  use function Garethellis\CrontabScheduleGenerator\hourly;
@@ -35,11 +38,11 @@ If you call `hourly()` by itself, you'll get a crontab schedule of "run hourly o
  echo hourly()->at("20");
  //outputs "20 * * * *" (i.e. run hourly at twenty past the hour)   
     
- echo daily()->at("half past");
+ echo hourly()->at("half past");
  //outputs "30 * * * *" (i.e. run hourly at half past the hour)
  
- echo daily()->at("9:30")->repeatingAt("10")->repeatingAt("11");
- //outputs "30 9,10,11 * * *" (i.e. run daily at 9:30, 10:30 and 11:30)
+ echo hourly()->at("on the hour")->repeatingAt("quarter past")->repeatingAt("half past")->repeatingAt("quarter to");
+ //outputs "0,15,30,45 * * * *" (i.e. run every 15 minutes)
  ```
 
 ### Daily

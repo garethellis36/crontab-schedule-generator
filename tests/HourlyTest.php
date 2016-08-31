@@ -37,4 +37,15 @@ class HourlyTest extends PHPUnit_Framework_TestCase
             is(equalTo("23 * * * *"))
         );
     }
+
+    /**
+     * @return void
+     */
+    public function test_it_can_repeat_after_a_given_number_of_minutes()
+    {
+        assertThat(
+            (string)hourly()->at("quarter past")->repeatingAt("half past")->repeatingAt("quarter to")->repeatingAt("50"),
+            is(equalTo("15,30,45,50 * * * *"))
+        );
+    }
 }

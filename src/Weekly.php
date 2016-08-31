@@ -17,7 +17,7 @@ class Weekly
     public function __toString()
     {
         if (!$this->day) {
-            return "";
+            return "0 0 * * 0";
         }
 
         $dayAsNumber = date("w", strtotime($this->day));

@@ -43,7 +43,7 @@ echo daily()->at("15:25");
 The `Weekly` class can be used to output crontab schedules to be run on a daily basis. The `weekly()` function
 returns a new instance of `Weekly`.
 
-If you call `weekly()` by itself, you will get blank string. In order to get a crontab schedule, you must specify
+If you call `weekly()` by itself, you will get a crontab schedule for midnight Sunday. You can specify
 a day to run on using the `on()` method. This method takes a day name in English (e.g. 'Sunday') as its only argument.
 If you call it like this, you will get a crontab schedule set to run on that given day at midnight. You can specify a time
 to run in the same way as the `Daily` class - see above.

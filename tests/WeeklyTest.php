@@ -10,11 +10,11 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
     /**
      * @return void
      */
-    public function test_blank_string_returned_if_no_day_set()
+    public function test_if_no_day_set_it_defaults_to_midnight_sunday()
     {
         assertThat(
             (string)weekly(),
-            is(equalTo(""))
+            is(equalTo("0 0 * * 0"))
         );
     }
 

@@ -25,6 +25,11 @@ returns a new instance of `Daily`.
 If you call `daily()` by itself, you will get a crontab scheduled of "run daily at midnight". You can specify
 a time to run using the `at()` method. This method takes a time in 24 hour format as its only argument.
 
+There is also the `repeatingAt()` method if you would like to schedule a task to run multiple times in a day. This 
+method takes a whole number as its only argument; this number represents the hour to repeat the job at. Note, 
+this will create a schedule which repeats at the same number of minutes past the hour as whatever you specify using
+ the `at()` method. It's not possible (currently) to do something like "run at 9:30, then repeat at 11:15, then repeat at "13:40". 
+
 ``` php
 use function Garethellis\CrontabScheduleGenerator\daily;
 
@@ -36,6 +41,9 @@ echo daily()->at("4");
    
 echo daily()->at("15:25");
 //outputs "25 15 * * *" (i.e. run daily at 3:25pm / 15:25
+
+echo daily()->at("9:30")->repeatingAt("10")->repeatingAt("11");
+//outputs "30 9,10,11 * * *" (i.e. run daily at 9:30, 10:30 and 11:30)
 ```
 
 ### Weekly

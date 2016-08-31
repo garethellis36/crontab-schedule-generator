@@ -60,4 +60,20 @@ class DailyTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidArgumentException::class);
         daily()->at("3pm");
     }
+
+    /**
+     * @return void
+     */
+    public function test_it_can_return_a_schedule_starting_at_a_point_and_repeating_at_given_hours()
+    {
+        assertThat(
+            (string)daily()->at("9")->repeatingAt("12")->repeatingAt("16"),
+            is(equalTo("0 9,12,16 * * *"))
+        );
+
+        assertThat(
+            (string)daily()->at("8:15")->repeatingAt("10")->repeatingAt("23")->repeatingAt("23"),
+            is(equalTo("15 8,10,23 * * *"))
+        );
+    }
 }

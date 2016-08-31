@@ -17,12 +17,37 @@ a Crontab schedule with PHP.
 
 I recommend using the included functions for expressive code.
 
+### Hourly
+
+The `Hourly` class can be used to output crontab schedules to be run on an hourly basis. The `hourly()` function
+can be used to create a new instance of `Hourly`.
+
+If you call `hourly()` by itself, you'll get a crontab schedule of "run hourly on the hour". You can specify
+ the minutes past the hour to run at by using the `at()` method. This method takes either a number (0-59) or
+ one of the following text strings: `quarter past`, `half past` or `quarter to`.
+ 
+ ``` php
+ use function Garethellis\CrontabScheduleGenerator\hourly;
+ 
+ echo hourly();
+ //outputs "0 * * * *" (i.e. run hourly on the hour)   
+    
+ echo hourly()->at("20");
+ //outputs "20 * * * *" (i.e. run hourly at twenty past the hour)   
+    
+ echo daily()->at("half past");
+ //outputs "30 * * * *" (i.e. run hourly at half past the hour)
+ 
+ echo daily()->at("9:30")->repeatingAt("10")->repeatingAt("11");
+ //outputs "30 9,10,11 * * *" (i.e. run daily at 9:30, 10:30 and 11:30)
+ ```
+
 ### Daily
 
 The `Daily` class can be used to output crontab schedules to be run on a daily basis. The `daily()` function
 returns a new instance of `Daily`.
 
-If you call `daily()` by itself, you will get a crontab scheduled of "run daily at midnight". You can specify
+If you call `daily()` by itself, you will get a crontab schedule of "run daily at midnight". You can specify
 a time to run using the `at()` method. This method takes a time in 24 hour format as its only argument.
 
 There is also the `repeatingAt()` method if you would like to schedule a task to run multiple times in a day. This 
@@ -40,7 +65,7 @@ echo daily()->at("4");
 //outputs "0 4 * * *" (i.e. run daily at 4am)   
    
 echo daily()->at("15:25");
-//outputs "25 15 * * *" (i.e. run daily at 3:25pm / 15:25
+//outputs "25 15 * * *" (i.e. run daily at 3:25pm / 15:25)
 
 echo daily()->at("9:30")->repeatingAt("10")->repeatingAt("11");
 //outputs "30 9,10,11 * * *" (i.e. run daily at 9:30, 10:30 and 11:30)

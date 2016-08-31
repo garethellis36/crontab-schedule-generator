@@ -16,3 +16,8 @@ function monthly()
 {
     return new Monthly();
 }
+
+function hourly()
+{
+    return new Hourly();
+}

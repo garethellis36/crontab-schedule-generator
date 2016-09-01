@@ -3,8 +3,6 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Code Climate code quality][ico-codeclimate]][link-codeclimate]
 
@@ -208,7 +206,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-travis]: https://travis-ci.org/garethellis36/crontab-schedule-generator.svg?branch=master
 [ico-version]: https://img.shields.io/packagist/v/garethellis/crontab-schedule-generator.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/garethellis/crontab-schedule-generator/master.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/garethellis36/crontab-schedule-generator/master.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/garethellis/crontab-schedule-generator.svg?style=flat-square
 [ico-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator/badges/gpa.svg)
 

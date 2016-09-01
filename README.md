@@ -1,5 +1,13 @@
 # Crontab Schedule Generator
 
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Quality Score][ico-code-quality]][link-code-quality]
+[![Total Downloads][ico-downloads]][link-downloads]
+[![Code Climate code quality][ico-codeclimate]][link-codeclimate]
+
 A simple PHP library for generating Crontab schedules with expressive PHP code.
 
 ## Install
@@ -189,7 +197,19 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
+[link-packagist]: https://packagist.org/packages/garethellis/crontab-schedule-generator
 [link-downloads]: https://packagist.org/packages/garethellis/crontab-schedule-generator
 [link-author]: https://github.com/garethellis36
 [link-contributors]: ../../contributors
 [link-jobby]: https://github.com/jobbyphp/jobby
+[link-travis]: https://travis-ci.org/garethellis36/crontab-schedule-generator
+[link-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator
+
+[ico-travis]: https://travis-ci.org/garethellis36/crontab-schedule-generator.svg?branch=master
+[ico-version]: https://img.shields.io/packagist/v/garethellis/crontab-schedule-generator.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/garethellis/crontab-schedule-generator/master.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/garethellis/crontab-schedule-generator.svg?style=flat-square
+[ico-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator/badges/gpa.svg)
+
+

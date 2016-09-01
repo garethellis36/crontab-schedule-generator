@@ -15,7 +15,11 @@ class MinutesInterval
     public function __construct($interval)
     {
         Assertion::integerish($interval);
-        Assertion::range($interval, 1, 59);
+        if (60 % $interval) {
+            throw new \InvalidArgumentException(
+                "Argument passed to MinutesInterval constructor must be a divisor of 60"
+            );
+        }
 
         $this->interval = $interval;
     }

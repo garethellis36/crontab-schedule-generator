@@ -139,6 +139,8 @@ library, this class is no good on its own, i.e. `every("5")` will not output any
 methods to create instances of `MinutesInterval` and `HoursInterval` respectively. From here, usage of these classes is very similar
 to the above. With `HoursInterval` you can specify a start and stop time using the `from()` and `until()` methods.
 
+For `MinutesInterval`, the interval value must be a divisor of 60 (i.e. 1,2,3,4,5,6,10,12,15,20,30,60).
+
 ```php
 
 use function Garethellis\CrontabScheduleGenerator\every`

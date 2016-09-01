@@ -21,3 +21,8 @@ function hourly()
 {
     return new Hourly();
 }
+
+function every($interval)
+{
+    return new Interval($interval);
+}

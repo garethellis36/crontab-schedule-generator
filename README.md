@@ -124,6 +124,32 @@ echo monthly()->on("12th")->at("10:15");
 //outputs "15 10 12 * *" (i.e. run every month on the 12th at 10:15am)
 ```
  
+ 
+### Every X minutes/Every X hours
+
+The `Interval` class allows you to output crontab schedules to be run every X minutes or every X hours. This class can be instantiated
+using the factory function `every()`. Unlike the other classes in this
+library, this class is no good on its own, i.e. `every("5")` will not output anything. Instead, you have to use the `minutes()` and `hours()`
+methods to create instances of `MinutesInterval` and `HoursInterval` respectively. From here, usage of these classes is very similar
+to the above. With `HoursInterval` you can specify a start and stop time using the `from()` and `until()` methods.
+
+```php
+
+use function Garethellis\CrontabScheduleGenerator\every`
+
+echo every("5")->minutes();
+//outputs "*/5 * * * *" (i.e. run every 5 minutes)
+
+echo every("2")->hours();
+//outputs "0 */2 * * *" (i.e. run every 2 hours on the hour)
+
+echo every("3")->hours()->at("half past");
+//outputs "30 */3 * * *" (i.e. run every 3 hours at half past the hour)
+
+echo every("2")->hours()->from("8")->until("14");
+//outputs "0 8,10,12,14 * * *" (i.e. run on the hour at 8am, 10am, 12pm and 2pm)
+
+```
 
 ## Change log
 

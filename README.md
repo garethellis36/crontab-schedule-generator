@@ -208,6 +208,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/garethellis36/crontab-schedule-generator/master.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/garethellis/crontab-schedule-generator.svg?style=flat-square
-[ico-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator/badges/gpa.svg)
+[ico-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator/badges/gpa.svg
 
 

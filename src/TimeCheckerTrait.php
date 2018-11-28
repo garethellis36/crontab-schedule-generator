@@ -8,13 +8,13 @@ trait TimeCheckerTrait
 {
     private function getHoursAndMinutesFromTimeString($time)
     {
-        Assertion::notEmpty($time);
+        Assertion::notBlank($time);
 
         $parts = explode(":", $time);
 
         Assertion::allIntegerish($parts);
 
-        $hours = ltrim($parts[0], "0");
+        $hours = $parts[0] == "0" ? "0" : ltrim($parts[0], "0");
 
         Assertion::range($hours, "0", "23");
 

@@ -14,13 +14,13 @@ trait TimeCheckerTrait
 
         Assertion::allIntegerish($parts);
 
-        $hours = $parts[0] == "0" ? "0" : ltrim($parts[0], "0");
+        $hours = $parts[0] == "0" ? "0" : $parts[0] + 0;
 
         Assertion::range($hours, "0", "23");
 
         $mins = "0";
         if (isset($parts[1])) {
-            $mins = ltrim($parts[1], "0");
+            $mins = $parts[1] + 0;
         }
 
         Assertion::range($mins, "0", "59");

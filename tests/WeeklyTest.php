@@ -39,6 +39,17 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
             is(equalTo("9 4 * * 4"))
         );
     }
+    
+    /**
+     * @return void
+     */
+    public function test_double_zero_mins()
+    {
+        assertThat(
+            (string)weekly()->on("Thursday")->at("16:00"),
+            is(equalTo("0 16 * * 4"))
+        );
+    }
 
     public function test_zero_is_a_valid_time()
     {

@@ -40,12 +40,35 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    public function test_zero_is_a_valid_time()
+    /**
+     * @return void
+     */
+    public function test_it_can_return_a_weekly_schedule_for_a_given_day_at_a_given_time_with_trailing_zeros_in_time()
     {
         assertThat(
-            (string)weekly()->on("Thursday")->at("0"),
+            (string)weekly()->on("Thursday")->at("04:00"),
+            is(equalTo("0 4 * * 4"))
+        );
+    }
+
+    /**
+     * @dataProvider times
+     */
+    public function test_zero_is_a_valid_time($time)
+    {
+        assertThat(
+            (string)weekly()->on("Thursday")->at($time),
             is(equalTo("0 0 * * 4"))
         );
+    }
+
+    public function times()
+    {
+        return [
+            ["0"],
+            ["00:00"],
+            ["0:00"],
+        ];
     }
 
 

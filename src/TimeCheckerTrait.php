@@ -10,17 +10,24 @@ trait TimeCheckerTrait
     {
         Assertion::notBlank($time);
 
-        $parts = explode(":", $time);
+        $parts = array_map("trim", explode(":", $time));
 
+        Assertion::notEmpty($parts);
         Assertion::allIntegerish($parts);
 
-        $hours = $parts[0] == "0" ? "0" : ltrim($parts[0], "0");
+        if ($parts[0] === "0" || $parts[0] === "00") {
+            $hours = "0";
+        } else {
+            $hours = ltrim($parts[0], "0");
+        }
 
         Assertion::range($hours, "0", "23");
 
-        $mins = "0";
-        if (isset($parts[1])) {
-            $mins = ltrim($parts[1], "0");
+        $mins = isset($parts[1]) ? $parts[1] : "0";
+        if ($mins === "0" || $mins === "00") {
+            $mins = "0";
+        } else {
+            $mins = ltrim($mins, "0");
         }
 
         Assertion::range($mins, "0", "59");

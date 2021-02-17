@@ -18,7 +18,7 @@
   "require": {
     "php": "7.3.* | 7.4.* | 8.0.*",
     "beberlei/assert": "^2.6",
-    "ext-intl": "^7.4"
+    "ext-intl": "*"
   },
   "require-dev": {
     "hamcrest/hamcrest-php": "^2.0",

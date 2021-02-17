@@ -1,14 +1,12 @@
 <?php
 
+namespace Garethellis\CrontabScheduleGenerator\Tests;
 
 use function Garethellis\CrontabScheduleGenerator\hourly;
 
-class HourlyTest extends PHPUnit_Framework_TestCase
+class HourlyTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function test_it_can_return_an_hourly_crontab_schedule()
+    public function test_it_can_return_an_hourly_crontab_schedule(): void
     {
         assertThat(
             (string)hourly(),
@@ -16,10 +14,8 @@ class HourlyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_an_hourly_crontab_with_minutes_specified_as_text()
+
+    public function test_it_can_return_an_hourly_crontab_with_minutes_specified_as_text(): void
     {
         assertThat(
             (string)hourly()->at("quarter past"),
@@ -27,10 +23,8 @@ class HourlyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_an_hourly_crontab_with_minutes_specified_numerically()
+
+    public function test_it_can_return_an_hourly_crontab_with_minutes_specified_numerically(): void
     {
         assertThat(
             (string)hourly()->at("23"),
@@ -38,10 +32,8 @@ class HourlyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_repeat_after_a_given_number_of_minutes()
+
+    public function test_it_can_repeat_after_a_given_number_of_minutes(): void
     {
         assertThat(
             (string)hourly()->at("quarter past")->repeatingAt("half past")->repeatingAt("quarter to")->repeatingAt("50"),

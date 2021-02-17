@@ -2,15 +2,11 @@
 
 namespace Garethellis\CrontabScheduleGenerator\Tests;
 
-use PHPUnit_Framework_TestCase;
 use function Garethellis\CrontabScheduleGenerator\weekly;
 
-class WeeklyTest extends PHPUnit_Framework_TestCase
+class WeeklyTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function test_if_no_day_set_it_defaults_to_midnight_sunday()
+    public function test_if_no_day_set_it_defaults_to_midnight_sunday(): void
     {
         assertThat(
             (string)weekly(),
@@ -18,10 +14,8 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_weekly_schedule_for_a_given_day_with_default_run_time_of_midnight()
+
+    public function test_it_can_return_a_weekly_schedule_for_a_given_day_with_default_run_time_of_midnight(): void
     {
         assertThat(
             (string)weekly()->on("Tuesday"),
@@ -29,10 +23,8 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_weekly_schedule_for_a_given_day_at_given_time()
+
+    public function test_it_can_return_a_weekly_schedule_for_a_given_day_at_given_time(): void
     {
         assertThat(
             (string)weekly()->on("Thursday")->at("04:09"),
@@ -40,10 +32,8 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_weekly_schedule_for_a_given_day_at_a_given_time_with_trailing_zeros_in_time()
+
+    public function test_it_can_return_a_weekly_schedule_for_a_given_day_at_a_given_time_with_trailing_zeros_in_time(): void
     {
         assertThat(
             (string)weekly()->on("Thursday")->at("04:00"),
@@ -72,10 +62,8 @@ class WeeklyTest extends PHPUnit_Framework_TestCase
     }
 
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_weekly_schedule_repeated_at_a_given_day()
+
+    public function test_it_can_return_a_weekly_schedule_repeated_at_a_given_day(): void
     {
         assertThat(
             (string)weekly()->on("Sunday")->repeatingOn("Monday"),

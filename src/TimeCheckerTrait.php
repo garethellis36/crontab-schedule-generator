@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
 
 trait TimeCheckerTrait
 {
-    private function getHoursAndMinutesFromTimeString($time)
+    private function getHoursAndMinutesFromTimeString(string $time): array
     {
         Assertion::notBlank($time);
 

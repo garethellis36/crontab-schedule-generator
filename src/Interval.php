@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
@@ -8,7 +10,7 @@ class Interval
 {
     private $interval;
 
-    public function __construct($interval)
+    public function __construct(string $interval)
     {
         Assertion::integerish($interval);
         Assertion::greaterThan($interval, 0);
@@ -16,12 +18,12 @@ class Interval
         $this->interval = $interval;
     }
 
-    public function minutes()
+    public function minutes(): MinutesInterval
     {
         return new MinutesInterval($this->interval);
     }
 
-    public function hours()
+    public function hours(): HoursInterval
     {
         return new HoursInterval($this->interval);
     }

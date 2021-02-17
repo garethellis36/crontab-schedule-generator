@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
@@ -23,7 +25,7 @@ class Weekly
         return sprintf("%s %s * * %s", $this->mins, $this->hours, implode(",", $this->day));
     }
 
-    public function on($day)
+    public function on(string $day): self
     {
         $day = ucfirst(strtolower($day));
 
@@ -41,7 +43,7 @@ class Weekly
         return $this;
     }
 
-    public function at($time)
+    public function at(string $time): self
     {
         list($hours, $mins) = $this->getHoursAndMinutesFromTimeString($time);
 
@@ -51,7 +53,7 @@ class Weekly
         return $this;
     }
 
-    public function repeatingOn($day)
+    public function repeatingOn(string $day): self
     {
         $day = ucfirst(strtolower($day));
 

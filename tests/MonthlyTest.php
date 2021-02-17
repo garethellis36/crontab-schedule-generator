@@ -3,14 +3,10 @@
 namespace Garethellis\CrontabScheduleGenerator\Tests;
 
 use function Garethellis\CrontabScheduleGenerator\monthly;
-use PHPUnit_Framework_TestCase;
 
-class MonthlyTest extends PHPUnit_Framework_TestCase
+class MonthlyTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function test_by_default_it_returns_midnight_on_first()
+    public function test_by_default_it_returns_midnight_on_first(): void
     {
         assertThat(
             (string)monthly(),
@@ -18,10 +14,8 @@ class MonthlyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_correct_schedule_from_ordinal_day()
+
+    public function test_it_can_return_a_correct_schedule_from_ordinal_day(): void
     {
         assertThat(
             (string)monthly()->on("3rd"),
@@ -29,10 +23,8 @@ class MonthlyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_correct_schedule_for_a_day_and_time()
+
+    public function test_it_can_return_a_correct_schedule_for_a_day_and_time(): void
     {
         assertThat(
             (string)monthly()->on("17th")->at("13"),

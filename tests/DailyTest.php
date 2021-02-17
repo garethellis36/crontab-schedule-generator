@@ -3,15 +3,11 @@
 namespace Garethellis\CrontabScheduleGenerator\Tests;
 
 use Assert\InvalidArgumentException;
-use PHPUnit_Framework_TestCase;
 use function Garethellis\CrontabScheduleGenerator\daily;
 
-class DailyTest extends PHPUnit_Framework_TestCase
+class DailyTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function test_default_daily_schedule_is_midnight()
+    public function test_default_daily_schedule_is_midnight(): void
     {
         assertThat(
             (string)daily(),
@@ -19,10 +15,8 @@ class DailyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_daily_schedule_for_a_given_time()
+
+    public function test_it_can_return_a_daily_schedule_for_a_given_time(): void
     {
         assertThat(
             (string)daily()->at("11:34"),
@@ -30,10 +24,8 @@ class DailyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_leading_zeros_are_stripped_from_times()
+
+    public function test_leading_zeros_are_stripped_from_times(): void
     {
         assertThat(
             (string)daily()->at("8:02"),
@@ -41,10 +33,8 @@ class DailyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_a_time_is_returned_if_only_an_hour_is_provided()
+
+    public function test_a_time_is_returned_if_only_an_hour_is_provided(): void
     {
         assertThat(
             (string)daily()->at("15"),
@@ -52,19 +42,15 @@ class DailyTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_doesnt_allow_non_numeric_characters_in_time_parameter_except_for_colon()
+
+    public function test_it_doesnt_allow_non_numeric_characters_in_time_parameter_except_for_colon(): void
     {
         $this->expectException(InvalidArgumentException::class);
         daily()->at("3pm");
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_schedule_starting_at_a_point_and_repeating_at_given_hours()
+
+    public function test_it_can_return_a_schedule_starting_at_a_point_and_repeating_at_given_hours(): void
     {
         assertThat(
             (string)daily()->at("9")->repeatingAt("12")->repeatingAt("16"),

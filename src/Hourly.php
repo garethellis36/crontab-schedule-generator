@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
@@ -23,7 +25,7 @@ class Hourly
         return sprintf("%s * * * *", implode(",", $this->mins));
     }
 
-    public function at($minutes)
+    public function at(string $minutes): self
     {
         if (!is_numeric($minutes)) {
             Assertion::choice($minutes, array_keys($this->textDescriptions));
@@ -36,7 +38,7 @@ class Hourly
         return $this;
     }
 
-    public function repeatingAt($minutes)
+    public function repeatingAt(string $minutes): self
     {
         if (!is_numeric($minutes)) {
             Assertion::choice($minutes, array_keys($this->textDescriptions));

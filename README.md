@@ -2,9 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Code Climate code quality][ico-codeclimate]][link-codeclimate]
 
 A simple PHP library for generating Crontab schedules with expressive PHP code.
 
@@ -29,11 +27,11 @@ The `Hourly` class can be used to output crontab schedules to be run on an hourl
 can be used to create a new instance of `Hourly`.
 
 If you call `hourly()` by itself, you'll get a crontab schedule of "run hourly on the hour". You can specify
- the minutes past the hour to run at by using the `at()` method. This method takes either a number (0-59) or
+ the minutes past the hour to run at by using the `at()` method. This method takes either a numeric string (0-59) or
  one of the following text strings: `on the hour`, `quarter past`, `half past` or `quarter to`.
  
  You can use the `repeatingAt` method to run a task multiple times in an hour. This method takes the same 
- argument as `at()`, i.e. a number (0-59) or a text string from the above list.
+ argument as `at()`, i.e. a numeric string (0-59) or a text string from the above list.
  
  ``` php
  use function Garethellis\CrontabScheduleGenerator\hourly;
@@ -57,10 +55,10 @@ The `Daily` class can be used to output crontab schedules to be run on a daily b
 returns a new instance of `Daily`.
 
 If you call `daily()` by itself, you will get a crontab schedule of "run daily at midnight". You can specify
-a time to run using the `at()` method. This method takes a time in 24 hour format as its only argument.
+a time to run using the `at()` method. This method takes a (string) time in 24 hour format as its only argument (e.g. `"16:00"`).
 
 There is also the `repeatingAt()` method if you would like to schedule a task to run multiple times in a day. This 
-method takes a whole number as its only argument; this number represents the hour to repeat the job at. Note, 
+method takes a whole number (numeric string) as its only argument; this number represents the hour to repeat the job at. Note, 
 this will create a schedule which repeats at the same number of minutes past the hour as whatever you specify using
  the `at()` method. It's not possible (currently) to do something like "run at 9:30, then repeat at 11:15, then repeat at "13:40". 
 
@@ -114,7 +112,7 @@ The `Monthly` class allows you to output crontab schedules to be run on a monthl
 a new instance of `Monthly`.
 
 Calling `monthly()` by itself will give you a crontab schedule for midnight on the first of the month. To specify a day to run on,
-you can use an ordinal or whole number with the `on()` method. You can also use the `at()` method in the same way as with
+you can use an ordinal or whole number (as a numeric string) with the `on()` method. You can also use the `at()` method in the same way as with
  weekly & daily.
  
 ``` php
@@ -139,7 +137,7 @@ library, this class is no good on its own, i.e. `every("5")` will not output any
 methods to create instances of `MinutesInterval` and `HoursInterval` respectively. From here, usage of these classes is very similar
 to the above. With `HoursInterval` you can specify a start and stop time using the `from()` and `until()` methods.
 
-For `MinutesInterval`, the interval value must be a divisor of 60 (i.e. 1,2,3,4,5,6,10,12,15,20,30,60).
+For `MinutesInterval`, the interval value must be a divisor of 60 as a numeric string (i.e. 1,2,3,4,5,6,10,12,15,20,30,60).
 
 ```php
 
@@ -171,16 +169,16 @@ $ vendor/bin/phpunit
 
 ## Code Style
 
-Easily check the code style against [PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) by running:
+Easily check the code style against [PSR-12 Coding Standard](https://www.php-fig.org/psr/psr-12) by running:
 
 ``` bash
-$ vendor/bin/phpcs src/ --standard=PSR2 --report=summary
+$ vendor/bin/phpcs src/ --standard=PSR12 --report=summary
 ```
 
 And automatically fix them with this:
 
 ``` bash
-$ vendor/bin/phpcbf src/ --standard=PSR2
+$ vendor/bin/phpcbf src/ --standard=PSR12
 ```
 
 ## Contributing
@@ -202,14 +200,8 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-author]: https://github.com/garethellis36
 [link-contributors]: ../../contributors
 [link-jobby]: https://github.com/jobbyphp/jobby
-[link-travis]: https://travis-ci.org/garethellis36/crontab-schedule-generator
-[link-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator
-
-[ico-travis]: https://travis-ci.org/garethellis36/crontab-schedule-generator.svg?branch=master
 [ico-version]: https://img.shields.io/packagist/v/garethellis/crontab-schedule-generator.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/garethellis36/crontab-schedule-generator/master.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/garethellis/crontab-schedule-generator.svg?style=flat-square
-[ico-codeclimate]: https://codeclimate.com/github/garethellis36/crontab-schedule-generator/badges/gpa.svg
 
 

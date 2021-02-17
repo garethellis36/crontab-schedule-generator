@@ -3,14 +3,10 @@
 namespace Garethellis\CrontabScheduleGenerator\Tests;
 
 use function Garethellis\CrontabScheduleGenerator\every;
-use PHPUnit_Framework_TestCase;
 
-class HoursIntervalTest extends PHPUnit_Framework_TestCase
+class HoursIntervalTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_crontab_for_every_2_hours()
+    public function test_it_can_return_a_crontab_for_every_2_hours(): void
     {
         assertThat(
             (string)every("2")->hours(),
@@ -18,10 +14,8 @@ class HoursIntervalTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_schedule_for_every_3_hours_at_a_given_minutes()
+
+    public function test_it_can_return_a_schedule_for_every_3_hours_at_a_given_minutes(): void
     {
         assertThat(
             (string)every("3")->hours()->at("half past"),
@@ -29,10 +23,8 @@ class HoursIntervalTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_schedule_for_every_X_hours_from_a_given_time()
+
+    public function test_it_can_return_a_schedule_for_every_X_hours_from_a_given_time(): void
     {
         assertThat(
             (string)every("4")->hours()->from("2"),
@@ -40,10 +32,8 @@ class HoursIntervalTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function test_it_can_return_a_schedule_for_every_X_hours_from_a_given_time_until_another()
+
+    public function test_it_can_return_a_schedule_for_every_X_hours_from_a_given_time_until_another(): void
     {
         assertThat(
             (string)every("6")->hours()->from("3")->until("18"),

@@ -1,28 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
-function daily()
+function daily(): Daily
 {
     return new Daily();
 }
 
-function weekly()
+function weekly(): Weekly
 {
     return new Weekly();
 }
 
-function monthly()
+function monthly(): Monthly
 {
     return new Monthly();
 }
 
-function hourly()
+function hourly(): Hourly
 {
     return new Hourly();
 }
 
-function every($interval)
+function every($interval): Interval
 {
     return new Interval($interval);
 }

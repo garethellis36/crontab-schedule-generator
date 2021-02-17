@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
@@ -12,7 +14,7 @@ class MinutesInterval
      * MinutesInterval constructor.
      * @param $interval
      */
-    public function __construct($interval)
+    public function __construct(string $interval)
     {
         Assertion::integerish($interval);
         if (60 % $interval) {

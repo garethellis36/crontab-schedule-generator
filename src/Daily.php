@@ -1,16 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
 
 class Daily
 {
+    use TimeCheckerTrait;
+
     private $hours = 0;
 
     private $mins = 0;
-
-    use TimeCheckerTrait;
 
     public function __toString()
     {
@@ -20,7 +22,7 @@ class Daily
         return sprintf("%s %s * * *", $this->mins, implode(",", $this->hours));
     }
 
-    public function at($time)
+    public function at(string $time): self
     {
         list($hours, $mins) = $this->getHoursAndMinutesFromTimeString($time);
 
@@ -29,7 +31,7 @@ class Daily
         return $this;
     }
 
-    public function repeatingAt($hour)
+    public function repeatingAt(string $hour): self
     {
         Assertion::integerish($hour);
         Assertion::range($hour, "0", "23");

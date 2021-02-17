@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Garethellis\CrontabScheduleGenerator;
 
 use Assert\Assertion;
@@ -22,10 +24,11 @@ class Monthly
         return sprintf("%s %s %s * *", $this->mins, $this->hours, $this->day);
     }
 
-    public function on($day)
+    public function on(string $day): self
     {
-        $formatter = new \NumberFormatter("en_US", \NumberFormatter::DECIMAL);
-        $day = $formatter->format($day);
+        $ordinalSuffixes = ['th','st','nd','rd','th','th','th','th','th','th'];
+
+        $day = str_replace($ordinalSuffixes, "", $day);
 
         Assertion::greaterThan($day, 0);
         Assertion::integerish($day);
@@ -34,9 +37,9 @@ class Monthly
         return $this;
     }
 
-    public function at($time)
+    public function at(string $time): self
     {
-        list($hours, $mins) = $this->getHoursAndMinutesFromTimeString($time);
+        [$hours, $mins] = $this->getHoursAndMinutesFromTimeString($time);
 
         $this->hours = $hours;
         $this->mins = $mins;

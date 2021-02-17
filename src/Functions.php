@@ -24,7 +24,7 @@ function hourly(): Hourly
     return new Hourly();
 }
 
-function every($interval): Interval
+function every(string $interval): Interval
 {
     return new Interval($interval);
 }

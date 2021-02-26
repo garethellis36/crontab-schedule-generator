@@ -1,5 +1,8 @@
 # ChangeLog
 
+## [1.1.0] - 2021-02-26
+* Updates `beberlei/assert` version
+
 ## [1.0.0] - 2021-02-17
 
 * Support for PHP versions below `7.3` has been dropped.

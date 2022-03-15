@@ -12,9 +12,6 @@ jobs:
       - name: Composer install
         run: composer install --prefer-dist
 
-      - name: Run PHPUnit (7.3)
-        run: php7.3 vendor/bin/phpunit
-
       - name: Run PHPUnit (7.4)
         run: php7.4 vendor/bin/phpunit
 

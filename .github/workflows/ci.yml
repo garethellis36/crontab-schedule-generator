@@ -20,3 +20,6 @@ jobs:
 
       - name: Run PHPUnit (8.0)
         run: php8.0 vendor/bin/phpunit
+
+      - name: Run PHPUnit (8.1)
+        run: php8.1 vendor/bin/phpunit

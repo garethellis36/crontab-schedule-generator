@@ -1,6 +1,6 @@
 # ChangeLog
 
-## [1.2.0] - 2024-06-21
+## [1.3.0] - 2024-06-21
 * Support for PHP versions below `8.1` has been dropped.
 * PHP `8.1`, `8.2`, and `8.3` are now supported and tested.
 

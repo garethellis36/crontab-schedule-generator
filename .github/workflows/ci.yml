@@ -7,7 +7,13 @@ jobs:
     runs-on: 'ubuntu-latest'
     strategy:
       matrix:
-        php-versions: ['8.1', '8.2', '8.3']
+        php-versions:
+          - '8.1'
+          - '8.2'
+          - '8.3'
+        dependencies:
+          - "lowest"
+          - "highest"
     steps:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -15,14 +21,10 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: intl
 
-      - name: Composer install
-        run: composer install --prefer-dist
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
 
-      - name: Run PHPUnit (8.1)
-        run: php8.1 vendor/bin/phpunit
-
-      - name: Run PHPUnit (8.2)
-        run: php8.2 vendor/bin/phpunit
-
-      - name: Run PHPUnit (8.3)
-        run: php8.3 vendor/bin/phpunit
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit

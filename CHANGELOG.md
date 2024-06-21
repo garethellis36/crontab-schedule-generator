@@ -1,5 +1,9 @@
 # ChangeLog
 
+## [1.2.0] - 2024-06-21
+* Support for PHP versions below `8.1` has been dropped.
+* PHP `8.1`, `8.2`, and `8.3` are now supported and tested.
+
 ## [1.1.0] - 2021-02-26
 * Updates `beberlei/assert` version
 

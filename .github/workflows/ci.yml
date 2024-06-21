@@ -3,20 +3,30 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  run:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        php-versions:
+          - '8.1'
+          - '8.2'
+          - '8.3'
+        dependencies:
+          - "lowest"
+          - "highest"
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - name: Composer install
-        run: composer install --prefer-dist
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: intl
 
-      - name: Run PHPUnit (7.4)
-        run: php7.4 vendor/bin/phpunit
+      - name: "Install dependencies with Composer"
+        uses: "ramsey/composer-install@v2"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
 
-      - name: Run PHPUnit (8.0)
-        run: php8.0 vendor/bin/phpunit
-
-      - name: Run PHPUnit (8.1)
-        run: php8.1 vendor/bin/phpunit
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit
